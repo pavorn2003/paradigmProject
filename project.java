@@ -25,7 +25,6 @@ public class project {
         public String getName() {return name;}
     }
     
-    
     public class Customer {
         protected String name;
         protected int cashback = 0;
@@ -35,14 +34,12 @@ public class project {
         public int getCashback() {return cashback;}
     }
     
-    
-    public class Order extends Customer {
+    public class Order {
         protected int id;
         protected String shippingType = "S";
         protected int totWeight = 0;
         protected int totPrice = 0;
         public Order(String n,int i,String s) {
-            super(n);
             id = i;
             shippingType=s;
         }
@@ -50,7 +47,6 @@ public class project {
         public void addPrice(int n) {totPrice += n;}//calculate total price
         public int getPrice() {return totPrice;}
         public int getWeight() {return totWeight;}
-    
     }
     
     public class ShippingCalculator {
@@ -58,7 +54,6 @@ public class project {
         protected int eFee1, eFee2, eFee3;
         protected int sMax, sFee;
         protected int vFee,vMax;
-        
         public ShippingCalculator() {}
         public void ef1(int n1,int n2) {
             eMax1 = n1;
@@ -137,7 +132,7 @@ public class project {
             
             //reading order
 
-            infile = "src/main/Java/project1/orders.txt"; //CHANGE THIS FOR INPUT TO WORK
+            infile = "src/main/Java/project1/orders.txt";
             rd = new Scanner(new File(infile));
             
             List<Order> orders = new ArrayList<Order>(); //USE ARRAYLIST
@@ -191,9 +186,7 @@ public class project {
                 //set next order's cashback
                 customers.get(cusName.indexOf(buf[1].trim())).setCashback((int)(orders.get(count).getPrice() * 0.01));
                     
-                
                 count++;
-                
             }
             rd.close();
         } catch(Exception e){
